@@ -1,7 +1,7 @@
 def superscript(n):
     return "".join(["⁰¹²³⁴⁵⁶⁷⁸⁹"[ord(c)-ord('0')] for c in str(n)])
 
-def create_equation():
+def create_equation():             #создание уравнения с произвольными коэффициентами в виде строки
     from random import randint as r
     k = int(input("Задайте степень k для создания уравнения высшей степени\n"))
     a, b = int(input("Задайте начальную границу промежутка для выбора коэффициентов\n")), int(input("Задайте конечную границу промежутка для выбора коэффициентов\n"))
