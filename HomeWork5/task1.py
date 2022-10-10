@@ -15,12 +15,10 @@ with open("task1input.txt", "r", encoding='utf-8') as file:
     text = file.read()
     # print(text)
 text_list = text.split()
-word_del = list(map(lambda c: c.strip('.,?!:;'), (filter(lambda x: 'ава' in x.lower() , text_list))))
-# print(word_del)
-for w_d in word_del:
-    for i in range(len(text_list)):
-        if w_d == text_list[i].strip('.,?!:;'):
-            text_list[i] = text_list[i].replace(w_d, "")
+# print(text_list)
+for i in range(len(text_list)):
+    if "ава" in text_list[i].lower():
+        text_list[i] = text_list[i].replace(text_list[i].strip('.,?!:;'), "")
 text = " ".join(text_list)
 
 
