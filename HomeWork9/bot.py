@@ -12,3 +12,6 @@ def start_message(message):
     c.phone_book()
 
 bot.polling(none_stop=True, interval=0)
+
+
+# тест проверка
