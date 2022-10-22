@@ -3,7 +3,7 @@ def show_data(text):
         text = [str(i) + "\n" + "\n".join(val) for i, val in enumerate(text, start=1)]
     elif isinstance(text, str):
         text = [str(i) + "\n" + val for i, val in enumerate(text.split('\n\n'), start=1)]
-    print("\n\n".join(text))
+    return "\n\n".join(text)
 
 def check_num(num):
     while True:
