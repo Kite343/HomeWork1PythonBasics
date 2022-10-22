@@ -53,3 +53,6 @@ def new_entry():
 
 def new_string():
     return input("Введите новое значение записи\n")
+
+def print_text(text):
+    print(text)

@@ -10,14 +10,14 @@ def show_phonebook():
 def copy_in_txt():
     # book = m_txt.read_file() # база телефонной книги в txt файле
     book = m_csv.read_file()  # база телефонной книги в csv файле
-    print("В какой файл записать дынне?")
+    view.print_text("В какой файл записать дынные?")
     new_name = view.name_file()
     m_txt.write_files(new_name, book)
 
 def copy_in_csv():
     # book = m_txt.read_file() # база телефонной книги в txt файле
     book = m_csv.read_file()  # база телефонной книги в csv файле
-    print("В какой файл записать дынне?")
+    view.print_text("В какой файл записать дынные?")
     new_name = view.name_file()
     m_csv.write_files(new_name, book)
 
@@ -27,11 +27,11 @@ def add_data_phonebook():
     m_csv.add_data(entry)  # база телефонной книги в csv файле
 
 def del_entry_phonebook():
-    print("Для удаления записи необходимо ввести номер записи для удаления")
+    view.print_text("Для удаления записи необходимо ввести номер записи для удаления")
     # book = m_txt.read_file() # база телефонной книги в txt файле
     book = m_csv.read_file()  # база телефонной книги в csv файле
 
-    print("Перед выбором номера записи показать телефонну книгу?")
+    view.print_text("Перед выбором номера записи показать телефонну книгу?")
     if view.yes_no():
         view.show_data(book)
 
@@ -46,16 +46,16 @@ def del_entry_phonebook():
     
 
 def edit_entry_phonebook():
-    print("Для редактирования записи необходимо ввести номер записи для редактирования")
+    view.print_text("Для редактирования записи необходимо ввести номер записи для редактирования")
     # book = m_txt.read_file() # база телефонной книги в txt файле
     book = m_csv.read_file()  # база телефонной книги в csv файле
 
-    print("Перед выбором номера записи показать телефонну книгу?")
+    view.print_text("Перед выбором номера записи показать телефонну книгу?")
     if view.yes_no():
         view.show_data(book)
 
     number = view.num_entry(len(book))
-    print("Какую часть записи отредактировать?\n 1 - фамилия, 2 - имя, 3 - номер телефона, 4 - комментарий")
+    view.print_text("Какую часть записи отредактировать?\n 1 - фамилия, 2 - имя, 3 - номер телефона, 4 - комментарий")
     val = view.num_entry(4)
 
     if isinstance(book, str):   # база телефонной книги в csv файле

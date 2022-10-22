@@ -10,11 +10,11 @@ action_def = {1: c_d.show_phonebook,
 
 
 def phone_book():
-    print("Начать работу с телефонной книгой?")
+    view.print_text("Начать работу с телефонной книгой?")
     start = view.yes_no()
     while start:
         action = view.show_menu()
         action_def[action]()
 
-        print("Продолжить работу с телефонной книгой?")
+        view.print_text("Продолжить работу с телефонной книгой?")
         start = view.yes_no()
