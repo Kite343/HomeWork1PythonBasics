@@ -78,6 +78,7 @@ def get_phone(message):
 def get_comment(message):
     entry.append(message.text)
     c_d.add_data_phonebook(entry)
+    bot.send_message(message.chat.id, "Запись добавлена")
 
 def del_entry_phonebook(message):
     global num
@@ -86,11 +87,12 @@ def del_entry_phonebook(message):
         num = int(num)
         if 0 < num <= n:
             c_d.del_entry_phonebook(num)
+            bot.send_message(message.chat.id, "Запись удалена")
         else:
-            bot.send_message(message.chat.id, "Только цифра больше 0 и меньше " + str(n))
+            bot.send_message(message.chat.id, "Только цифра от 1 до " + str(n))
             bot.register_next_step_handler(message, del_entry_phonebook)
     else:
-        bot.send_message(message.chat.id, "Только номер записи, цифра, больше 0 и меньше " + str(n))
+        bot.send_message(message.chat.id, "Только номер записи, цифра, от 1 до " + str(n))
         bot.register_next_step_handler(message, del_entry_phonebook)
 
 def edit_entry_phonebook(message):
@@ -106,10 +108,10 @@ def edit_entry_phonebook(message):
                 4 - Комментарий\n ")
             bot.register_next_step_handler(message, edit_entry)
         else:
-            bot.send_message(message.chat.id, "Только цифра больше 0 и меньше " + str(n))
+            bot.send_message(message.chat.id, "Только цифра от 1 до " + str(n))
             bot.register_next_step_handler(message, edit_entry_phonebook)
     else:
-        bot.send_message(message.chat.id, "Только номер записи, цифра, больше 0 и меньше " + str(n))
+        bot.send_message(message.chat.id, "Только номер записи, цифра, от 1 до " + str(n))
         bot.register_next_step_handler(message, edit_entry_phonebook)
 
 def edit_entry(message):
@@ -131,6 +133,7 @@ def edit(message):
     global num
     global i
     c_d.edit_entry_phonebook(num, i, message.text)
+    bot.send_message(message.chat.id, "Запись изменена")
 
 if __name__ == '__main__':
     main()
