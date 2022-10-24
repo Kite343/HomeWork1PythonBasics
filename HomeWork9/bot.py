@@ -13,16 +13,16 @@ i = 0
 
 bot = telebot.TeleBot('5557533810:AAGljPN-5omvkqL18kzN5CHyOjeCbf-64ns')
 
-@bot.message_handler(commands=['start'])
-def start_message(message):
-    if message.text == '/start':
+def main():
+    @bot.message_handler(commands=['start'])
+    def start_message(message):
         menu = "Выбери необходимое действие:\n\
-                1 - Вывести на экран телефонную книгу\n\
-                2 - Скопировать телефонную книгу в txt файл\n\
-                3 - Скопировать телефонную книгу в csv файл\n\
-                4 - добавить данные в телефонную книгу\n\
-                5 - удалить запись из телефонной книги\n\
-                6 - редактировать запись в телефонной книге"
+            1 - Вывести на экран телефонную книгу\n\
+            2 - Скопировать телефонную книгу в txt файл\n\
+            3 - Скопировать телефонную книгу в csv файл\n\
+            4 - добавить данные в телефонную книгу\n\
+            5 - удалить запись из телефонной книги\n\
+            6 - редактировать запись в телефонной книге"
         bot.send_message(message.chat.id, menu)
         @bot.message_handler(content_types=['text'])
         def menu(message):
@@ -53,11 +53,12 @@ def start_message(message):
                     n = c_d.len_phonebook()
                     bot.send_message(message.chat.id, "Выберите номер записи для изменения")
                     bot.register_next_step_handler(message, edit_entry_phonebook)
-                    
+                
             else:
                 bot.send_message(message.chat.id, "Введите число от 1 до 6")
-    else:
-        bot.send_message(message.chat.id, "Напиши '/start'")
+    @bot.message_handler(commands=['help'])
+    def help_message(message):
+        bot.send_message(message.chat.id, "Введите /start для начала работы")
 
 def get_surname(message):
     global entry
@@ -131,5 +132,8 @@ def edit(message):
     global i
     c_d.edit_entry_phonebook(num, i, message.text)
 
-# bot.polling(none_stop=True, interval=0)
-bot.polling()
+if __name__ == '__main__':
+    main()
+
+bot.polling(none_stop=True, interval=0)
+# bot.polling()
